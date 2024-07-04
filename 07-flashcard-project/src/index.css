@@ -1,0 +1,27 @@
+.app {
+  margin: 2rem;
+}
+
+.flashcard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+}
+
+.flashcard div {
+  background-color: #f7f7f7;
+  border: 1px solid #e7e7e7;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  aspect-ratio: 1.1 / 1;
+}
+
+div.selected {
+  border: 1px solid #e03131;
+  background-color: #e03110;
+}
