@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(240, 240, 238);
+  font-size: 0.97rem;
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contextbox {
+  margin-left: 2rem;
+  margin-top: 2rem;
+  text-align: justify;
+  width: 90%;
+}
+
+.item {
+  background-color: #fff;
+  margin: 2rem 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.number {
+  margin-right: 1rem;
+}
+
+.icon {
+  position: relative;
+  top: 2px;
+  right: 10px;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.open {
+  border-top: 4px solid #087f5b;
+}
+.open .title,
+.open .number {
+  color: #087f5b;
+}
