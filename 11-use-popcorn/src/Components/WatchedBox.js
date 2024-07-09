@@ -1,30 +1,6 @@
-import { useState } from "react";
-import { tempWatchedData } from "./App";
 import { average } from "./App";
 
-export function WatchedBox() {
-  const [watched, setWatched] = useState(tempWatchedData);
-  const [isOpen2, setIsOpen2] = useState(true);
-
-  return (
-    <div className="box">
-      <button
-        className="btn-toggle"
-        onClick={() => setIsOpen2((open) => !open)}
-      >
-        {isOpen2 ? "–" : "+"}
-      </button>
-      {isOpen2 && (
-        <>
-          <WatchedSumamry watched={watched} />
-          <WatchedMovieList watched={watched} />
-        </>
-      )}
-    </div>
-  );
-}
-
-function WatchedMovieList({ watched }) {
+export function WatchedMovieList({ watched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
@@ -57,7 +33,7 @@ function WatchedMovie({ movie }) {
   );
 }
 
-function WatchedSumamry({ watched }) {
+export function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
