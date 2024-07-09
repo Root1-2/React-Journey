@@ -4,8 +4,8 @@ import { Search } from "./Nav";
 import { NumResult } from "./Nav";
 import { Main } from "./Main";
 import { useState } from "react";
-import { Box } from "./ListBox";
-import { MovieList } from "./ListBox";
+import { Box } from "./Box";
+import { MovieList } from "./Box";
 import { WatchedSummary } from "./WatchedBox";
 import { WatchedMovieList } from "./WatchedBox";
 
@@ -72,6 +72,18 @@ export default function App() {
       </Nav>
 
       <Main>
+        {/* Passing Elements as Props */}
+        {/* <Box element={<MovieList movies={movies} />} />
+        <Box
+          element={
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedMovieList watched={watched} />
+            </>
+          }
+        /> */}
+
+        {/* Passing Elements as Children */}
         <Box>
           <MovieList movies={movies} />
         </Box>
