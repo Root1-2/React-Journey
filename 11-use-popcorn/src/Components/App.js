@@ -3,7 +3,7 @@ import { Logo } from "./Nav";
 import { Search } from "./Nav";
 import { NumResult } from "./Nav";
 import { Main } from "./Main";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box } from "./Box";
 import { MovieList } from "./Box";
 import { WatchedSummary } from "./WatchedBox";
@@ -59,9 +59,24 @@ export const tempWatchedData = [
 export const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
+const KEY = "3505b6d7";
+const query = "Interstellar";
+
 export default function App() {
-  const [watched, setWatched] = useState(tempWatchedData);
-  const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  useEffect(function () {
+    async function fetchMovies() {
+      const res = await fetch(
+        `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+      );
+      const data = await res.json();
+      setMovies(data.Search);
+      console.log(data.Search);
+    }
+    fetchMovies();
+  }, []);
 
   return (
     <>
