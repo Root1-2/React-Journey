@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { TextExpander } from "./TextExpander";
 
 export default function App() {
   return (
@@ -34,41 +34,6 @@ export default function App() {
         travel is a pretty cool thing to think about. Who knows what we'll
         discover next!
       </TextExpander>
-    </div>
-  );
-}
-
-function TextExpander({
-  expandButtonText = "Show More",
-  collapseButtonText = "Show Less",
-  collapsedNumWords = 15,
-  buttonColor = "#1f09cd",
-  className,
-  expanded = false,
-  children,
-}) {
-  const [isExpanded, setIsExpanded] = useState(expanded);
-
-  const displayText = isExpanded
-    ? children
-    : children.split(" ").slice(0, collapsedNumWords).join(" ") + "...";
-
-  return (
-    <div className={className}>
-      <span>{displayText}</span>
-      <button
-        style={{
-          background: "none",
-          font: "inherit",
-          border: "none",
-          cursor: "pointer",
-          color: buttonColor,
-          marginLeft: "6px",
-        }}
-        onClick={() => setIsExpanded((exp) => !exp)}
-      >
-        {isExpanded ? collapseButtonText : expandButtonText}
-      </button>
     </div>
   );
 }
