@@ -2,8 +2,7 @@ import { Nav, Logo, Search, NumResult } from "./Nav";
 import { Main } from "./Main";
 import { useEffect, useState } from "react";
 import { Box, MovieList } from "./Box";
-import { WatchedSummary } from "./WatchedBox";
-import { WatchedMovieList } from "./WatchedBox";
+import { WatchedSummary, WatchedMovieList } from "./WatchedBox";
 
 export const tempMovieData = [
   {
