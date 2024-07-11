@@ -3,6 +3,7 @@ import { Main } from "./Main";
 import { useEffect, useState } from "react";
 import { Box, MovieList } from "./Box";
 import { WatchedSummary, WatchedMovieList } from "./WatchedBox";
+import { ErrorMessage, Loader } from "./ErrorMessage";
 
 export const tempMovieData = [
   {
@@ -123,16 +124,4 @@ export default function App() {
       </Main>
     </>
   );
-}
-
-function ErrorMessage({ message }) {
-  return (
-    <p className="error">
-      <span>❌</span> {message}
-    </p>
-  );
-}
-
-function Loader() {
-  return <p className="loader">Loading...</p>;
 }
