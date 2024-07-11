@@ -1,8 +1,7 @@
 import { Nav, Logo, Search, NumResult } from "./Nav";
 import { Main } from "./Main";
 import { useEffect, useState } from "react";
-import { Box } from "./Box";
-import { MovieList } from "./Box";
+import { Box, MovieList } from "./Box";
 import { WatchedSummary } from "./WatchedBox";
 import { WatchedMovieList } from "./WatchedBox";
 
