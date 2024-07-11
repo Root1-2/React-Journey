@@ -1,7 +1,4 @@
-import { Nav } from "./Nav";
-import { Logo } from "./Nav";
-import { Search } from "./Nav";
-import { NumResult } from "./Nav";
+import { Nav, Logo, Search, NumResult } from "./Nav";
 import { Main } from "./Main";
 import { useEffect, useState } from "react";
 import { Box } from "./Box";
