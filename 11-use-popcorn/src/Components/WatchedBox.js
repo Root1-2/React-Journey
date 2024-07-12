@@ -18,8 +18,8 @@ export function WatchedMovieList({ watched }) {
 function WatchedMovie({ movie }) {
   return (
     <li key={movie.imdbID}>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie.poster} alt={`${movie.Title} poster`} />
+      <h3>{movie.title}</h3>
       <div>
         <p>
           <span>⭐️</span>
@@ -68,10 +68,11 @@ export function WatchedSummary({ watched }) {
   );
 }
 
-export function MovieSelected({ movieSelectedID, onCloseMovie }) {
+export function MovieSelected({ movieSelectedID, onCloseMovie, onAddWatched }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [userRating, setUserRating] = useState("");
 
   const {
     Title: title,
@@ -86,7 +87,18 @@ export function MovieSelected({ movieSelectedID, onCloseMovie }) {
     Genre: genre,
   } = movie;
 
-  console.log(title, year);
+  function handleAdd() {
+    const newWatchedMovie = {
+      imdbID: movieSelectedID,
+      title,
+      year,
+      poster,
+      imdbRating: Number(imdbRating),
+      runtime: runtime.split(" ").at(0),
+    };
+    onAddWatched(newWatchedMovie);
+    onCloseMovie();
+  }
   useEffect(
     function () {
       async function getMovieDetails() {
@@ -134,12 +146,16 @@ export function MovieSelected({ movieSelectedID, onCloseMovie }) {
               <p>
                 <span>⭐</span> {imdbRating}
               </p>
+              <p>Genre: {genre}</p>
             </div>
           </header>
 
           <section>
             <div className="rating">
-              <StarRating maxRating={10} />
+              <StarRating maxRating={10} onSetRating={setUserRating} />
+              <button className="btn-add" onClick={handleAdd}>
+                + Add To List
+              </button>
             </div>
             <p>
               <em>{plot}</em>
