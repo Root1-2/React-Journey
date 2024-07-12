@@ -89,13 +89,24 @@ export function MovieSelected({ movieSelectedID, onCloseMovie }) {
   useEffect(
     function () {
       async function getMovieDetails() {
-        setIsLoading(true);
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${movieSelectedID}`
-        );
-        const data = await res.json();
-        setMovie(data);
-        setIsLoading(false);
+        try {
+          setIsLoading(true);
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=${KEY}&i=${movieSelectedID}`
+          );
+
+          if (!res.ok)
+            throw new Error("Something went wrong with fetch movies");
+
+          const data = await res.json();
+
+          if (data.Response === "False") throw new Error("Movie Not Found");
+          setMovie(data);
+        } catch (err) {
+          console.log(err);
+        } finally {
+          setIsLoading(false);
+        }
       }
       getMovieDetails();
     },
