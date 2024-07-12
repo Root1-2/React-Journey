@@ -63,6 +63,13 @@ export function WatchedSummary({ watched }) {
   );
 }
 
-export function MovieSelected({ movieSelected }) {
-  return <div className="details">{movieSelected}</div>;
+export function MovieSelected({ movieSelected, onCloseMovie }) {
+  return (
+    <div className="details">
+      {movieSelected}
+      <button className="btn-back" onClick={onCloseMovie}>
+        &larr;
+      </button>
+    </div>
+  );
 }

@@ -76,8 +76,12 @@ export default function App() {
   // console.log("During Render");
 
   function handleSelectMovie(id) {
-    setMovieSelected(id);
+    setMovieSelected((movieSelected) => (id === movieSelected ? null : id));
     console.log(id);
+  }
+
+  function handleCloseMovie() {
+    setMovieSelected(null);
   }
 
   useEffect(
@@ -145,7 +149,10 @@ export default function App() {
         </Box>
         <Box>
           {movieSelected ? (
-            <MovieSelected movieSelected={movieSelected} />
+            <MovieSelected
+              movieSelected={movieSelected}
+              onCloseMovie={handleCloseMovie}
+            />
           ) : (
             <>
               <WatchedSummary watched={watched} />
