@@ -2,7 +2,7 @@ import { Nav, Logo, Search, NumResult } from "./Nav";
 import { Main } from "./Main";
 import { useEffect, useState } from "react";
 import { Box, MovieList } from "./Box";
-import { WatchedSummary, WatchedMovieList } from "./WatchedBox";
+import { WatchedSummary, WatchedMovieList, MovieSelected } from "./WatchedBox";
 import { ErrorMessage, Loader } from "./ErrorMessage";
 
 export const tempMovieData = [
@@ -57,14 +57,13 @@ export const average = (arr) =>
 
 const KEY = "3505b6d7";
 
-const tempQuery = "Interstellar";
-
 export default function App() {
   const [query, setQuery] = useState("");
   const [watched, setWatched] = useState([]);
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [movieSelected, setMovieSelected] = useState();
 
   // useEffect(function () {
   //   console.log("After initial render");
@@ -75,6 +74,11 @@ export default function App() {
   // });
 
   // console.log("During Render");
+
+  function handleSelectMovie(id) {
+    setMovieSelected(id);
+    console.log(id);
+  }
 
   useEffect(
     function () {
@@ -134,12 +138,20 @@ export default function App() {
         <Box>
           {/* {isLoading ? <Loader /> : <MovieList movies={movies} />} */}
           {isLoading && <Loader />}
-          {!isLoading && !error && <MovieList movies={movies} />}
+          {!isLoading && !error && (
+            <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+          )}
           {error && <ErrorMessage message={error} />}
         </Box>
         <Box>
-          <WatchedSummary watched={watched} />
-          <WatchedMovieList watched={watched} />
+          {movieSelected ? (
+            <MovieSelected movieSelected={movieSelected} />
+          ) : (
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedMovieList watched={watched} />
+            </>
+          )}
         </Box>
       </Main>
     </>

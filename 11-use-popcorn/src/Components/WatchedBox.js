@@ -62,3 +62,7 @@ export function WatchedSummary({ watched }) {
     </div>
   );
 }
+
+export function MovieSelected({ movieSelected }) {
+  return <div className="details">{movieSelected}</div>;
+}
