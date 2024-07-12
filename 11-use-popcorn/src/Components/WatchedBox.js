@@ -5,17 +5,21 @@ import { useState, useEffect } from "react";
 
 const KEY = "3505b6d7";
 
-export function WatchedMovieList({ watched }) {
+export function WatchedMovieList({ watched, onDeleteWatched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovie movie={movie} key={movie.imdbID} />
+        <WatchedMovie
+          movie={movie}
+          key={movie.imdbID}
+          onDeleteWatched={onDeleteWatched}
+        />
       ))}
     </ul>
   );
 }
 
-function WatchedMovie({ movie }) {
+function WatchedMovie({ movie, onDeleteWatched }) {
   return (
     <li key={movie.imdbID}>
       <img src={movie.poster} alt={`${movie.Title} poster`} />
@@ -33,6 +37,13 @@ function WatchedMovie({ movie }) {
           <span>⏳</span>
           <span>{movie.runtime} min</span>
         </p>
+
+        <button
+          className="btn-delete"
+          onClick={() => onDeleteWatched(movie.imdbID)}
+        >
+          x
+        </button>
       </div>
     </li>
   );
@@ -53,11 +64,11 @@ export function WatchedSummary({ watched }) {
         </p>
         <p>
           <span>⭐️</span>
-          <span>{avgImdbRating}</span>
+          <span>{avgImdbRating.toFixed(2)}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{avgUserRating}</span>
+          <span>{avgUserRating.toFixed(2)}</span>
         </p>
         <p>
           <span>⏳</span>
@@ -176,7 +187,10 @@ export function MovieSelected({
                   )}
                 </>
               ) : (
-                <p>You already rated this movie</p>
+                <p>
+                  You already rated this movie {watchedUserRating}{" "}
+                  <span>⭐</span>
+                </p>
               )}
             </div>
             <p>
