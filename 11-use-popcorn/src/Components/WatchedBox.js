@@ -1,6 +1,6 @@
 import { average } from "./App";
 import { StarRating } from "./StarRating";
-import { Loader } from "./ErrorMessage";
+import { Loader, ErrorMessage } from "./ErrorMessage";
 import { useState, useEffect } from "react";
 
 const KEY = "3505b6d7";
@@ -71,6 +71,7 @@ export function WatchedSummary({ watched }) {
 export function MovieSelected({ movieSelectedID, onCloseMovie }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const {
     Title: title,
@@ -91,6 +92,7 @@ export function MovieSelected({ movieSelectedID, onCloseMovie }) {
       async function getMovieDetails() {
         try {
           setIsLoading(true);
+          setError("");
           const res = await fetch(
             `http://www.omdbapi.com/?apikey=${KEY}&i=${movieSelectedID}`
           );
@@ -104,6 +106,7 @@ export function MovieSelected({ movieSelectedID, onCloseMovie }) {
           setMovie(data);
         } catch (err) {
           console.log(err);
+          setError(err.message);
         } finally {
           setIsLoading(false);
         }
@@ -114,9 +117,9 @@ export function MovieSelected({ movieSelectedID, onCloseMovie }) {
   );
   return (
     <div className="details">
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {isLoading && <Loader />}
+      {error && <ErrorMessage message={error} />}
+      {!isLoading && !error && (
         <>
           <header>
             <button className="btn-back" onClick={onCloseMovie}>
