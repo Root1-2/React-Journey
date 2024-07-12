@@ -21,9 +21,7 @@ export function NumResult({ movies }) {
   );
 }
 
-export function Search() {
-  const [query, setQuery] = useState("");
-
+export function Search({ query, setQuery }) {
   return (
     <input
       className="search"

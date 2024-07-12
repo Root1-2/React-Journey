@@ -57,13 +57,24 @@ export const average = (arr) =>
 
 const KEY = "3505b6d7";
 
+const tempQuery = "Interstellar";
+
 export default function App() {
+  const [query, setQuery] = useState("");
   const [watched, setWatched] = useState([]);
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const tempQuery = "Interstellar";
+  useEffect(function () {
+    console.log("A");
+  }, []);
+
+  useEffect(function () {
+    console.log("B");
+  });
+
+  console.log("C");
 
   useEffect(function () {
     async function fetchMovies() {
@@ -79,7 +90,6 @@ export default function App() {
 
         if (data.Response === "False") throw new Error("Movie Not Found");
         setMovies(data.Search);
-        console.log(data.Search);
       } catch (err) {
         console.log(err);
         setError(err.message);
@@ -94,7 +104,7 @@ export default function App() {
     <>
       <Nav>
         <Logo />
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResult movies={movies} />
       </Nav>
 
