@@ -1,7 +1,7 @@
 import { average } from "./App";
 import { StarRating } from "./StarRating";
 import { Loader, ErrorMessage } from "./ErrorMessage";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const KEY = "3505b6d7";
 
@@ -90,6 +90,15 @@ export function MovieSelected({
   const [error, setError] = useState("");
   const [userRating, setUserRating] = useState("");
 
+  const countRef = useRef(0);
+
+  useEffect(
+    function () {
+      if (userRating) countRef.current = countRef.current++;
+    },
+    [userRating]
+  );
+
   const isWatched = watched
     .map((movie) => movie.imdbID)
     .includes(movieSelectedID);
@@ -120,6 +129,7 @@ export function MovieSelected({
       imdbRating: Number(imdbRating),
       runtime: runtime.split(" ").at(0),
       userRating,
+      countRatingDecisions: countRef.current,
     };
     onAddWatched(newWatchedMovie);
     onCloseMovie();
