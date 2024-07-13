@@ -43,7 +43,7 @@ export default function App() {
     <>
       {error && <ErrorMessage message={error} />}
       {!isLoading && !error && (
-        <div>
+        <div class="currency-converter">
           <input
             type="text"
             value={amount}
@@ -69,7 +69,6 @@ export default function App() {
             <option value="CAD">CAD</option>
             <option value="INR">INR</option>
           </select>
-
           <p>
             {result} {toCur}
           </p>
