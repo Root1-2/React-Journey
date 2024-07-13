@@ -77,7 +77,6 @@ export default function App() {
 
   function handleSelectMovie(id) {
     setMovieSelected((movieSelected) => (id === movieSelected ? null : id));
-    console.log(id);
   }
 
   function handleCloseMovie() {
@@ -92,7 +91,6 @@ export default function App() {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
 
-  console.log(watched);
   useEffect(
     function () {
       const controller = new AbortController();
@@ -114,8 +112,8 @@ export default function App() {
           setMovies(data.Search);
           setError("");
         } catch (err) {
-          console.log(err);
           if (err.name !== "AbortError") {
+            console.log(err.message);
             setError(err.message);
           }
         } finally {
@@ -127,6 +125,7 @@ export default function App() {
         setError("");
         return;
       }
+      handleCloseMovie();
       fetchMovies();
 
       return function () {

@@ -124,6 +124,23 @@ export function MovieSelected({
     onAddWatched(newWatchedMovie);
     onCloseMovie();
   }
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+        }
+      }
+      document.addEventListener("keydown", callback);
+
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseMovie]
+  );
+
   useEffect(
     function () {
       async function getMovieDetails() {
@@ -142,7 +159,6 @@ export function MovieSelected({
           if (data.Response === "False") throw new Error("Movie Not Found");
           setMovie(data);
         } catch (err) {
-          console.log(err);
           setError(err.message);
         } finally {
           setIsLoading(false);
