@@ -41,9 +41,10 @@ export default function App() {
 
   return (
     <>
-      {error && <ErrorMessage message={error} />}
-      {!isLoading && !error && (
-        <div class="currency-converter">
+      {error ? (
+        <ErrorMessage message={error} />
+      ) : (
+        <div className="currency-converter">
           <input
             type="text"
             value={amount}
@@ -58,9 +59,10 @@ export default function App() {
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="CAD">CAD</option>
-            <option value="INR">IND</option>
+            <option value="INR">INR</option>
           </select>
           <select
+            value={toCur}
             onChange={(e) => setToCur(e.target.value)}
             disabled={isLoading}
           >
