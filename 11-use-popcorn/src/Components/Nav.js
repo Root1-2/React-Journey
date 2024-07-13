@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export function Nav({ children }) {
   return <nav className="nav-bar">{children}</nav>;
 }
@@ -20,6 +22,11 @@ export function NumResult({ movies }) {
 }
 
 export function Search({ query, setQuery }) {
+  useEffect(function () {
+    const el = document.querySelector(".search");
+    el.focus();
+  }, []);
+
   return (
     <input
       className="search"
