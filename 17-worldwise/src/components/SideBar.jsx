@@ -10,7 +10,9 @@ function SideBar() {
       <Logo />
       <AppNav />
 
-      <Outlet />
+      <div>
+        <Outlet />
+      </div>
 
       <footer className={styles.footer}>
         <p className={styles.copyright}>
