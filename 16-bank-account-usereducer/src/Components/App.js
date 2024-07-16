@@ -2,9 +2,6 @@ import { useReducer } from "react";
 import Button from "./Button";
 import Header from "./Header";
 
-const START_BALANCE = 500;
-const LOAN = 5000;
-
 const initialState = {
   balance: 0,
   loan: 0,
