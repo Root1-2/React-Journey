@@ -1,9 +1,9 @@
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./Header";
 import { Main } from "./Main";
 import { Archive } from "./Archive";
 import { Footer } from "./Footer";
-import { PostProvider, PostContext } from "./PostContext";
+import { PostProvider } from "./PostContext";
 
 export default function App() {
   const [isFakeDark, setIsFakeDark] = useState(false);

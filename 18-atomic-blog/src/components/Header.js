@@ -1,11 +1,9 @@
-import { useContext, createContext } from "react";
 import { Results } from "./Results";
 import { SearchPosts } from "./SearchPosts";
-
-const PostContext = createContext();
+import { usePosts } from "./PostContext";
 
 export function Header() {
-  const { onClearPosts } = useContext(PostContext);
+  const { onClearPosts } = usePosts;
   return (
     <header>
       <h1>
