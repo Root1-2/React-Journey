@@ -112,4 +112,4 @@ function useQuiz() {
   return context;
 }
 
-export default { QuizProvider, useQuiz };
+export { QuizProvider, useQuiz };
