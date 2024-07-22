@@ -1,0 +1,125 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 2,
+      "name": "Capriccoisa",
+      "unitPrice": 14,
+      "imageUrl": "Picture 2",
+      "ingredients": ["tomato", "mozarella", "mushrooms", "ham", "basil"],
+      "soldOut": true
+    },
+    {
+      "id": 3,
+      "name": "Romana",
+      "unitPrice": 15,
+      "imageUrl": "Picture 3",
+      "ingredients": ["tomato", "mozarella", "prosciutto"],
+      "soldOut": false
+    },
+    {
+      "id": 4,
+      "name": "Prosciutto e Rucola",
+      "unitPrice": 16,
+      "imageUrl": "Picture 4",
+      "ingredients": ["tomato", "mozarella", "basil", "arugula"],
+      "soldOut": false
+    },
+    {
+      "id": 5,
+      "name": "Diavola",
+      "unitPrice": 18,
+      "imageUrl": "Picture 5",
+      "ingredients": ["tomato", "mozarella", "chilli flakes", "spicy salami"],
+      "soldOut": true
+    },
+    {
+      "id": 6,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 7,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 8,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 9,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 10,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 11,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 12,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 13,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 14,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    },
+    {
+      "id": 15,
+      "name": "Margherita",
+      "unitPrice": 12,
+      "imageUrl": "Picture 1",
+      "ingredients": ["tomato", "mozarella", "basil"],
+      "soldOut": false
+    }
+  ]
+}
