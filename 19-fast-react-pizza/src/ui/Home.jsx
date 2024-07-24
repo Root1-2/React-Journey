@@ -2,8 +2,8 @@ import CreateUser from "../features/users/CreateUser";
 
 export default function Home() {
   return (
-    <div className="text-center my-10 sm:my-16 px-4">
-      <h1 className="text-xl font-semibold mb-8 md:text-3xl">
+    <div className="text-center text-xl font-semibold text-yellow-500">
+      <h1 className="mb-8 text-xl font-semibold md:text-3xl">
         The best pizza.
         <br />
         <span className="text-yellow-500">
