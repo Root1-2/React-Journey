@@ -5,7 +5,7 @@ import Username from "../features/users/Username";
 function Header() {
   return (
     <header
-      className="bg-yellow-500 uppercase px-4 py-3 
+      className="bg-yellow-500 uppercase px-4 py-3 font-pizza
       border-b border-stone-300 sm:px-6 flex items-center justify-around"
     >
       <Link to="/" className="tracking-widest">
