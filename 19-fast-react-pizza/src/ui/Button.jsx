@@ -8,8 +8,8 @@ export default function Button({ children, disabled, to, type }) {
   };
 
   const styles = {
-    primary: base + "py-3 px-4 md:px-6 md:py-4",
-    small: base + "py-2 md:px-5 md:py-2",
+    primary: base + " py-3 px-4 md:px-6 md:py-4",
+    small: base + " px-4 py-2 md:px-5 md:py-2.5 text-xs",
   };
 
   if (to)
