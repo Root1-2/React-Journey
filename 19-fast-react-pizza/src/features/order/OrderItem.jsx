@@ -19,6 +19,6 @@ export default function OrderItem({ item, isLoadingIngredients, ingredients }) {
 // Define prop types
 OrderItem.propTypes = {
   item: PropTypes.object.isRequired,
-  isLoadingIngredients: PropTypes.string.isRequired,
-  ingredients: PropTypes.string.isRequired,
+  isLoadingIngredients: PropTypes.string,
+  ingredients: PropTypes.string,
 };
