@@ -1,10 +1,17 @@
-import { getCabin } from "@/app/_lib/data-service";
+import { getCabin, getCabins } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { isDate } from "date-fns";
 import Image from "next/image";
 
 export async function generateMetadata({ params }) {
   const { name } = await getCabin(params.cabinId);
   return { title: `Cabin ${name}` };
+}
+export async function generateStaticParams() {
+  const cabins = await getCabins();
+  const ids = cabins.map((cabin) => ({ cabinId: String(cabin.id) }));
+
+  return ids;
 }
 
 export default async function Page({ params }) {
@@ -36,7 +43,7 @@ export default async function Page({ params }) {
             <li className="flex gap-3 items-center">
               <UsersIcon className="h-5 w-5 text-primary-600" />
               <span className="text-lg">
-                For up to <span className="font-bold">{maxCapacity}</span>{" "}
+                For up to <span className="font-bold">{maxCapacity}</span>
                 guests
               </span>
             </li>
