@@ -1,3 +1,4 @@
+import SubmitButton from "@/app/_components/SubmitButton";
 import { updateBooking } from "@/app/_lib/action";
 import { getBooking, getCabin } from "@/app/_lib/data-service";
 
@@ -49,9 +50,9 @@ export default async function Page({ params }) {
         </div>
 
         <div className="flex justify-end items-center gap-6">
-          <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-            Update reservation
-          </button>
+          <SubmitButton pendingLabel="Updating....">
+            Update Reservation
+          </SubmitButton>
         </div>
       </form>
     </div>
