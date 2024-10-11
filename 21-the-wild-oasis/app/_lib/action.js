@@ -3,10 +3,16 @@
 import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
+import { getBookings } from "./data-service";
 
 export async function updateGuest(formData) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
+
+  const guestBookings = await getBookings(session.user.guestId);
+  const guestBookingsIds = guestBookings.map((bookings) => bookings.id);
+  if (!guestBookingsIds.includes(bookingId))
+    throw new Error("You are not allowed to delete this bookings");
 
   const nationalID = formData.get("nationalID");
   const [nationality, countryFlag] = formData.get("nationality").split("%");
@@ -36,6 +42,8 @@ export async function deleteReservation(bookingId) {
     .eq("id", bookingId);
 
   if (error) throw new Error("Booking could not be deleted.");
+
+  revalidatePath("/account/reservations");
 }
 
 export async function signInAction() {
