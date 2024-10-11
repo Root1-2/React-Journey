@@ -4,6 +4,9 @@ import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 import { getBookings } from "./data-service";
+import { redirect } from "next/navigation";
+
+// Guest Side
 
 export async function updateGuest(formData) {
   const session = await auth();
@@ -32,9 +35,16 @@ export async function updateGuest(formData) {
   revalidatePath("/account/profile");
 }
 
+// Reservation Side
+
 export async function deleteReservation(bookingId) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
+
+  const guestBookings = await getBookings(session.user.guestId);
+  const guestBookingsIds = guestBookings.map((bookings) => bookings.id);
+  if (!guestBookingsIds.includes(bookingId))
+    throw new Error("You are not allowed to delete this bookings");
 
   const { error } = await supabase
     .from("bookings")
@@ -45,6 +55,35 @@ export async function deleteReservation(bookingId) {
 
   revalidatePath("/account/reservations");
 }
+
+export async function updateBooking(formData) {
+  const bookingId = Number(formData.get("bookingId"));
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const guestBookings = await getBookings(session.user.guestId);
+  const guestBookingsIds = guestBookings.map((bookings) => bookings.id);
+  if (!guestBookingsIds.includes(bookingId))
+    throw new Error("You are not allowed to update this bookings");
+
+  const updateData = {
+    numGuests: Number(formData.get("numGuests")),
+    observations: formData.get("observations").slice(0, 500),
+  };
+
+  const { error } = await supabase
+    .from("bookings")
+    .update(updateData)
+    .eq("id", bookingId);
+
+  if (error) throw new Error("Booking could not be edited.");
+
+  revalidatePath(`/account/reservations/edit/${bookingId}`);
+  revalidatePath("/account/reservations");
+  redirect("/account/reservations");
+}
+
+// Authentication Side
 
 export async function signInAction() {
   await signIn("google", { redirectTo: "/account" });
